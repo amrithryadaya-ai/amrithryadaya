@@ -1,0 +1,497 @@
+<!doctype html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amrithryadaya Heart & I-Nova Clinic</title>
+  <meta name="description" content="Consultant Cardiologist — Amrithryadaya Heart & I-Nova Clinic. Expertise, education, publications, and appointment booking." />
+  <meta name="theme-color" content="#dc2626" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+
+    /* Custom styles for section headings */
+    h2[id] {
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      border-radius: 1rem 1rem 0 0;
+      margin-bottom: 0;
+      transition: background 0.3s ease;
+    }
+    .dark h2[id] {
+      background: linear-gradient(135deg, #374151, #4b5563);
+    }
+    h2[id]:hover {
+      background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+    }
+    .dark h2[id]:hover {
+      background: linear-gradient(135deg, #4b5563, #6b7280);
+    }
+
+    /* Custom styles for toggle sections */
+    .toggle-heading {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      border-radius: 1rem 1rem 0 0;
+      margin-bottom: 0;
+      transition: background 0.3s ease;
+    }
+    .dark .toggle-heading {
+      background: linear-gradient(135deg, #374151, #4b5563);
+    }
+    .toggle-heading:hover {
+      background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+    }
+    .dark .toggle-heading:hover {
+      background: linear-gradient(135deg, #4b5563, #6b7280);
+    }
+    .toggle-heading .arrow {
+      transition: transform 0.3s ease;
+      margin-left: auto;
+    }
+    .toggle-heading.expanded .arrow {
+      transform: rotate(180deg);
+    }
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+      background: white;
+      border-radius: 0 0 1rem 1rem;
+      border: 1px solid #e5e7eb;
+      border-top: none;
+      margin-top: -1rem;
+    }
+    .dark .content {
+      background: #1f2937;
+      border-color: #374151;
+    }
+    .content.expanded {
+      max-height: 2000px; /* Adjust based on content */
+      padding: 1.5rem;
+    }
+
+    /* Form status styles */
+    #formStatus {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    #formStatus.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #formStatus.error {
+      color: #dc2626; /* Red */
+      animation: shake 0.5s ease-in-out;
+    }
+    #formStatus.success {
+      color: #16a34a; /* Green */
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900 dark:from-gray-950 dark:to-gray-950 dark:text-gray-100">
+  <!-- ===== Top Nav ===== -->
+  <header class="sticky top-0 z-40 border-b bg-white/80 backdrop-blur dark:border-gray-700 dark:bg-gray-900/80">
+    <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
+      <a href="#home" class="text-lg font-semibold tracking-tight sm:text-xl">
+        <img src="images/Clinic_logo.png" alt="Clinic Logo" class="h-12 w-12 sm:h-10 sm:w-10 object-cover inline-block">
+      </a>
+      <nav class="hidden items-center gap-5 sm:flex">
+        <a class="hover:text-red-600" href="#about">About</a>
+        <a class="hover:text-red-600" href="#expertise">Expertise</a>
+        <a class="hover:text-red-600" href="#education">Education</a>
+        <a class="hover:text-red-600" href="#experience">Experience</a>
+        <a class="hover:text-red-600" href="#publications">Research</a>
+        <a class="hover:text-red-600" href="#contact">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a id="callTop" href="#" class="hidden rounded-xl border px-3 py-2 text-sm shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800 sm:inline-flex">📞 Call</a>
+        <button id="themeBtn" class="rounded-xl border px-3 py-2 text-sm shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800" aria-label="Toggle dark mode">🌓 Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section id="home" class="mx-auto w-full max-w-6xl px-4 py-10 sm:py-14">
+    <div class="grid items-center gap-6 sm:grid-cols-[240px,1fr]">
+      <img id="heroPhoto" src="images/Dr_Shubham_Sharma.jpeg" alt="Dr Shubham Sharma" class="w-52 h-52 rounded-3xl object-cover shadow sm:w-60 sm:h-60">
+      <div class="space-y-3">
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Dr. Shubham Kumar Sharma</h1>
+        <p class="text-lg text-gray-700 dark:text-gray-300">Interventional Cardiologist</p>
+        <p id="tagline" class="min-h-6 text-base font-medium text-gray-900 dark:text-gray-100"></p>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium dark:border-gray-700">Clinic: Amrit-Hryadaya Heart & General Clinic</span>
+          <span class="inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium dark:border-gray-700">Jaipur, Rajasthan, India</span>
+        </div>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <a id="callBtn" href="8055045155" class="inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold shadow hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">Call</a>
+          <a id="waBtn" href="8055045155" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold shadow hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">WhatsApp</a>
+          <a id="emailBtn" href="mailto:amrithryadaya@gmail.com" class="inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold shadow hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">Email</a>
+          <a id="mapBtn" href="https://maps.app.goo.gl/wpjop915RjgvygaS7" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold shadow hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">Maps</a>
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-semibold text-white shadow" style="background:#dc2626">Book Appointment →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="mx-auto w-full max-w-6xl px-4 py-4">
+    <h2 id="about" class="toggle-heading text-2xl font-semibold tracking-tight sm:text-3xl">About<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" class="arrow h-6 w-6 shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></h2>
+    <div class="content">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <p class="leading-relaxed text-gray-800 dark:text-gray-200">
+          Dr. Shubham Kumar Sharma is a Interventional Cardiologist at Amrit-Hryadaya Heart & General Clinic, Jaipur. He holds a DM in Cardiology from AIIMS, Jodhpur, and completed his MD in General Medicine from R.N.T. Medical College, University of Rajasthan, Udaipur. He earned his MBBS from Grant Medical College & Sir J J Hospital, Mumbai.
+        </p>
+        <p class="leading-relaxed text-gray-800 dark:text-gray-200">
+          With over 5 years of experience, Dr. Sharma specializes in both interventional cardiology (Angiography, Angioplasty, Device Closure, AICD/CRTD, Pacemaker) and non-invasive cardiology (ECG, Echocardiography, TMT, Ambulatory BP Monitoring, Holter). He is renowned for his patient-centric approach and commitment to embracing the latest advancements in cardiology to ensure the best outcomes for his patients.
+        </p>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-xl border p-3 text-sm dark:border-gray-700"><span class="font-medium">Mon-Sat:</span> 10:00 AM – 6:00 PM</div>
+          <div class="rounded-xl border p-3 text-sm dark:border-gray-700"><span class="font-medium">Sun:</span> On appointment</div>
+          <div class="rounded-xl border p-3 text-sm dark:border-gray-700 sm:col-span-2"><span class="font-medium">Address:</span> Amrit-Hryadaya Heart & General Clinic, Jaipur</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Expertise ===== -->
+  <section class="mx-auto w-full max-w-6xl px-4 py-4">
+    <h2 id="expertise" class="toggle-heading text-2xl font-semibold tracking-tight sm:text-3xl">Expertise<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" class="arrow h-6 w-6 shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></h2>
+    <div class="content">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <ul class="flex flex-wrap gap-3">
+          <li class="inline-flex items-center rounded-xl border px-3 py-1 text-sm dark:border-gray-700">🩺 Angiography</li>
+          <li class="inline-flex items-center rounded-xl border px-3 py-1 text-sm dark:border-gray-700">🩺 Angioplasty</li>
+          <li class="inline-flex items-center rounded-xl border px-3 py-1 text-sm dark:border-gray-700">🩺 Pacemaker</li>
+          <li class="inline-flex items-center rounded-xl border px-3 py-1 text-sm dark:border-gray-700">🩺 AICD/CRTD</li>
+          <li class="inline-flex items-center rounded-xl border px-3 py-1 text-sm dark:border-gray-700">🩺 Pediatrics Cardiology</li>
+          <li class="inline-flex items-center rounded-xl border px-3 py-1 text-sm dark:border-gray-700">🩺 Device Closure</li>
+          <li class="inline-flex items-center rounded-xl border px-3 py-1 text-sm dark:border-gray-700">🩺 Non-invasive Cardiology</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section class="mx-auto w-full max-w-6xl px-4 py-4">
+    <h2 id="education" class="toggle-heading text-2xl font-semibold tracking-tight sm:text-3xl">Education<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" class="arrow h-6 w-6 shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></h2>
+    <div class="content">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <ul class="ml-5 list-disc space-y-2 text-gray-800 dark:text-gray-200">
+          <li>MBBS — Grant Medical College & Sir J J Hospital, Mumbai</li>
+          <li>MD (General Medicine) — R.N.T. Medical College, Udaipur</li>
+          <li>DM (Cardiology) — AIIMS, Jodhpur</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Experience ===== -->
+  <section class="mx-auto w-full max-w-6xl px-4 py-4">
+    <h2 id="experience" class="toggle-heading text-2xl font-semibold tracking-tight sm:text-3xl">Experience<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" class="arrow h-6 w-6 shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></h2>
+    <div class="content">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <ul class="ml-5 list-disc space-y-2 text-gray-800 dark:text-gray-200">
+          <li><span class="font-medium">Interventional Cardiologist</span> — Amrit-Hryadaya Heart & General Clinic, Jaipur.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Publications ===== -->
+  <section class="mx-auto w-full max-w-6xl px-4 py-4">
+    <h2 id="publications" class="toggle-heading text-2xl font-semibold tracking-tight sm:text-3xl">Research Publications<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" class="arrow h-6 w-6 shrink-0" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></h2>
+    <div class="content">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <ol class="space-y-4 pl-5 [list-style-type:decimal] text-gray-800 dark:text-gray-200">
+          <li>Assessment and comparison of distal radial artery diameter in anatomical snuff box with conventional radial artery before coronary catheterization. Indian Heart Journal. 2022 Jul 1;74(4):322-6. Deora S, Sharma SK, Choudhary R, Kaushik A, Garg PK, Khera PS, Singh K, Shah S, Patel TM.</li>
+          <li>Clinical characteristic, red blood cell indices, iron profile and prognosis of heart failure in females. Global Cardiology Science & Practice. 2021 Jun 6;2021(2). Deora S, Sharma JB, Sharma SK, Chaudhary N, Kaushik A, Choudhary R, Charan J, Kumar D, Bohra GK, Singh K.</li>
+          <li>Idiopathic Isolated Right Ventricular Cardiomyopathy: A Rare Case Report. Avicenna Journal of Medicine. 2023 Jan;13(01):056-9. Mohanty V, Sharma SK, Goswami S, Gudhage R, Deora S.</li>
+          <li>Anomalous double right coronary artery presenting as inferior wall ST-elevation myocardial infarction: A rare coronary anomaly. Heart Views.  2023 Apr 1;24(2):114. Mohanty V, Sharma S, Deora S.</li>
+          <li>“Role of CBNAAT (cartridge based nucleic acid amplification test) in the diagnosis of tubercular pleural effusion”, International Journal of Current Research, 11, (04), 3070-3075. Dr. Shubham Kumar Sharma, Dr. Mahesh Dave and Dr. Archana Gokhroo, 2019.</li>
+          <li>Study of lipid profile in acute viral hepatitis. International Journal of Research and Review. 2019;6:339-44. Dave M, Sharma SK, Surjan T.</li>
+          <li>A study of GGT as a diagnostic marker of metabolic syndrome. Int J Appl Res 2019;5(7):461-465. Dr. Mahesh Dave, Dr. Shubham Kumar Sharma, Dr. Shruti Agrawal.</li>
+          <li>Role of uric acid in metabolic syndrome, Dr. Mahesh Dave, Dr. Shubham Kumar Sharma, Dr. Shruti Agrawal, International Journal of Scientific Research: Volume-8|Issue-8|Aurgust-2019.</li>
+          <li>Tuberous Sclerosis with Autosomal Dominant Polycystic Kidney Disease. Journal, Indian Academy of Clinical Medicine. 2019 Jul;20(3-4):239. Dave M, Sharma SK, Yadav S, Burli A, Sukhwal D.</li>
+          <li>Post-Dengue Guillain-Barre Syndrome: A Rare Association. Indian Journal of Clinical practice. 2020 Feb;30(9). DAVE M, SHARMA SK, CHAUDHARY JS.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact / Appointment ===== -->
+  <section id="contact" class="mx-auto w-full max-w-6xl px-4 py-12">
+    <h2 class="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Request an Appointment</h2>
+    <div class="rounded-2xl border bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+      <form id="apptForm" class="grid gap-4 sm:grid-cols-2" novalidate>
+        <label class="flex flex-col gap-1">
+          <span class="text-sm font-medium">Full name</span>
+          <input name="name" class="rounded-xl border px-3 py-2 dark:border-gray-700 dark:bg-gray-900" required />
+        </label>
+        <label class="flex flex-col gap-1">
+          <span class="text-sm font-medium">Phone</span>
+          <input name="phone" class="rounded-xl border px-3 py-2 dark:border-gray-700 dark:bg-gray-900" placeholder="+91 " required/>
+        </label>
+        <label class="flex flex-col gap-1">
+          <span class="text-sm font-medium">Gender</span>
+          <select name="gender" class="rounded-xl border px-3 py-2 dark:border-gray-700 dark:bg-gray-900" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label class="flex flex-col gap-1">
+          <span class="text-sm font-medium">Address</span>
+          <input name="address" class="rounded-xl border px-3 py-2 dark:border-gray-700 dark:bg-gray-900" required />
+        </label>
+        <label class="flex flex-col gap-1 sm:col-span-2">
+          <span class="text-sm font-medium">Preferred date</span>
+          <input name="date" type="date" class="rounded-xl border px-3 py-2 dark:border-gray-700 dark:bg-gray-900" required />
+        </label>
+        <label class="flex flex-col gap-1 sm:col-span-2">
+          <span class="text-sm font-medium">Notes (optional)</span>
+          <input name="notes" class="rounded-xl border px-3 py-2 dark:border-gray-700 dark:bg-gray-900" />
+        </label>
+        <div class="sm:col-span-2 flex items-center justify-between gap-3">
+          <button class="rounded-2xl px-5 py-2.5 font-semibold text-white shadow" style="background:#dc2626">Request Appointment</button>
+          <p id="formStatus" class="text-sm text-gray-700 dark:text-gray-300" role="status"></p>
+        </div>
+      </form>
+      <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
+        <a id="mapLink" href="https://maps.app.goo.gl/wpjop915RjgvygaS7" target="_blank" rel="noreferrer" class="rounded-xl border px-3 py-2 dark:border-gray-700">Open in Maps</a>
+        <a id="callB" href="#" class="rounded-xl border px-3 py-2 dark:border-gray-700">Call</a>
+        <a id="waB" href="#" target="_blank" rel="noreferrer" class="rounded-xl border px-3 py-2 dark:border-gray-700">WhatsApp</a>
+        <a id="emailB" href="mailto:amrithryadaya@gmail.com" class="rounded-xl border px-3 py-2 dark:border-gray-700">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t bg-white dark:border-gray-700 dark:bg-gray-900">
+    <div class="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row">
+      <p class="text-sm text-gray-600 dark:text-gray-300">© <span id="year"></span> Amrit-Hryadaya Heart & General Clinic • Cardiology</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#home" class="rounded-xl border px-3 py-2 text-sm hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">Back to top</a>
+        <a href="#contact" class="rounded-xl border px-3 py-2 text-sm hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">Book now</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Minimal JS: config + behavior (no frameworks) ===== -->
+  <script>
+    // ---- Config you can edit in one place ----
+    const CFG = {
+      PHONE: "+91 8062136530",
+      WHATSAPP: "+91 8062136530",
+      TAGLINES: [
+        "Interventional & Non-invasive Cardiology",
+        "Angioplasty • Pacemaker • AICD/CRTD",
+        "ECG • Echo • TMT • Holter",
+      ],
+    };
+
+    // ---- Dark mode toggle with persistence ----
+    const themeBtn = document.getElementById("themeBtn");
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const saved = localStorage.getItem("df.dark");
+    const startDark = saved === "1" || (saved === null && prefersDark);
+    document.documentElement.classList.toggle("dark", startDark);
+    themeBtn.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("df.dark", isDark ? "1" : "0");
+    });
+
+    // ---- Phone/WhatsApp links ----
+    function wireContact() {
+      const tel = "tel:" + CFG.PHONE.replace(/\s|\(|\)|-/g, "");
+      const wa = "https://wa.me/" + CFG.WHATSAPP.replace(/\D/g, "");
+      ["callTop","callBtn","callB"].forEach(id => { const a = document.getElementById(id); if (a) a.href = tel; });
+      ["waBtn","waB"].forEach(id => { const a = document.getElementById(id); if (a) a.href = wa; });
+    }
+    wireContact();
+
+    // ---- Rotating tagline ----
+    const taglineEl = document.getElementById("tagline");
+    let idx = 0;
+    function rotateTagline() {
+      taglineEl.textContent = CFG.TAGLINES[idx % CFG.TAGLINES.length];
+      idx++;
+    }
+    rotateTagline();
+    setInterval(rotateTagline, 2400);
+
+    // ---- Simple form validation ----
+    const form = document.getElementById("apptForm");
+    const status = document.getElementById("formStatus");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const name = String(fd.get("name")||"").trim();
+      const phone = String(fd.get("phone")||"").trim();
+      const gender = String(fd.get("gender")||"").trim();
+      const address = String(fd.get("address")||"").trim();
+      const date = String(fd.get("date")||"");
+      const notes = String(fd.get("notes")||"").trim(); // optional
+
+      // Reset status
+      status.classList.remove("show", "error", "success");
+
+      // Name validation: only alphabets and spaces, no numbers or specials
+      if (!/^[a-zA-Z\s]+$/.test(name) || name.length < 2) {
+        status.textContent = "🚫 Oops! Name must be alphabets and spaces only, at least 2 characters.";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+        return;
+      }
+
+      // Phone validation: required, digits and + only, length based on +91
+      if (!phone) {
+        status.textContent = "🚫 Phone number is required!";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+        return;
+      }
+      if (!/^\+?[0-9]+$/.test(phone)) {
+        status.textContent = "🚫 Phone must be digits only, optionally starting with +.";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+        return;
+      }
+      if (phone.startsWith("+91")) {
+        if (phone.length !== 13) {
+          status.textContent = "🚫 +91 numbers must be exactly 13 characters (+91 + 10 digits).";
+          status.classList.add("show", "error");
+          setTimeout(() => {
+            status.classList.remove("show", "error", "success");
+          }, 5000);
+          return;
+        }
+      } else {
+        if (phone.length !== 10) {
+          status.textContent = "🚫 Phone number must be exactly 10 digits.";
+          status.classList.add("show", "error");
+          setTimeout(() => {
+            status.classList.remove("show", "error", "success");
+          }, 5000);
+          return;
+        }
+      }
+
+      // Gender validation: must be one of the options
+      if (!gender || !["Male", "Female", "Other"].includes(gender)) {
+        status.textContent = "🚫 Please select a valid gender.";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+        return;
+      }
+
+      // Address validation: required, at least 5 characters
+      if (!address || address.length < 5) {
+        status.textContent = "🚫 Address is required and must be at least 5 characters.";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+        return;
+      }
+
+      // Date validation: not past, today or future
+      if (!date) {
+        status.textContent = "🚫 Preferred date is required!";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+        return;
+      }
+      const selectedDate = new Date(date);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (selectedDate < today) {
+        status.textContent = "🚫 Time travel not allowed! Choose today or future date.";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+        return;
+      }
+
+      // Submit to Google Forms (saves directly to linked Google Sheet)
+      const formData = new FormData();
+      formData.append('entry.388678630', name); // Name
+      formData.append('entry.934553944', address); // Address
+      formData.append('entry.1824056723', phone); // Phone
+      formData.append('entry.828869790', notes); // Notes
+      formData.append('entry.1509233334', gender); // Gender
+       
+      const dateParts = date.split('-'); // YYYY-MM-DD
+      formData.append('entry.185259926_year', dateParts[0]); // Year
+      formData.append('entry.185259926_month', dateParts[1]); // Month
+      formData.append('entry.185259926_day', dateParts[2]); // Day
+      
+
+      fetch('https://docs.google.com/forms/d/e/1FAIpQLSctN5cCjuc27kMmIK5RIal5NRASyPx7XsUPzXAY4KDEJwtm3w/formResponse', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Prevents CORS issues
+      })
+      .then(() => {
+        status.textContent = "✅ Awesome! Your appointment request is submitted. We'll call to confirm.";
+        status.classList.add("show", "success");
+        form.reset();
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+      })
+      .catch(error => {
+        status.textContent = "🚫 Submission failed. Please try again.";
+        status.classList.add("show", "error");
+        setTimeout(() => {
+          status.classList.remove("show", "error", "success");
+        }, 5000);
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ---- Toggle functionality for sections ----
+    document.querySelectorAll('.toggle-heading').forEach(heading => {
+      heading.addEventListener('click', () => {
+        const content = heading.nextElementSibling;
+        const isExpanded = heading.classList.contains('expanded');
+        if (isExpanded) {
+          heading.classList.remove('expanded');
+          content.classList.remove('expanded ');
+        } else {
+          heading.classList.add('expanded');
+          content.classList.add('expanded');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
